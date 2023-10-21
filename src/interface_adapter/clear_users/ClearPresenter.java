@@ -2,12 +2,26 @@ package interface_adapter.clear_users;
 
 // TODO Complete me
 
-public class ClearPresenter {
-    public void displayClearResult(boolean success) {
-        if (success) {
-            System.out.println("All users have been cleared successfully.");
-        } else {
-            System.out.println("Failed to clear all users.");
-        }
+import interface_adapter.ViewManagerModel;
+import interface_adapter.login.LoginState;
+import use_case.clear_users.ClearOutputBoundary;
+import use_case.clear_users.ClearOutputData;
+
+public class ClearPresenter implements ClearOutputBoundary {
+    private final ClearViewModel clearViewModel;
+    private ViewManagerModel viewManagerModel;
+
+    public ClearPresenter(ClearViewModel clearViewModel, ViewManagerModel viewManagerModel) {
+        this.clearViewModel = clearViewModel;
+        this.viewManagerModel = viewManagerModel;
+    }
+
+
+    @Override
+    public void prepareSuccessView(ClearOutputData clearOutputData) {
+        ClearState clearState = clearViewModel.getState();
+        clearState.setUsers(clearOutputData.getClearedUsers());
+        this.clearViewModel.setState(clearState);
+        viewManagerModel.firePropertyChanged();
     }
 }

@@ -1,21 +1,23 @@
 package use_case.clear_users;
 
+
 // TODO Complete me
 
+
+import interface_adapter.clear_users.ClearState;
+
+import java.util.ArrayList;
+
 public class ClearOutputData {
-    private String clearTime;
-    private boolean useCaseFailed;
 
-    public ClearOutputData(String clearTime, boolean useCaseFailed) {
-        this.clearTime = clearTime;
-        this.useCaseFailed = useCaseFailed;
+    public ArrayList<String> clearedUsers;
+
+
+    public ClearOutputData(ArrayList users) {
+        this.clearedUsers = users;
+    }
+    public ArrayList<String> getClearedUsers(){
+        return clearedUsers;
     }
 
-    public String getClearTime() {
-        return clearTime;
-    }
-
-    public void setClearTime(String clearTime) {
-        this.clearTime = clearTime;
-    }
 }

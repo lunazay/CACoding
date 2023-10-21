@@ -2,8 +2,10 @@ package use_case.clear_users;
 
 // TODO Complete me
 
-public interface ClearOutputBoundary {
-    void prepareSuccessView(ClearInputBoundary user);
+import java.util.ArrayList;
 
-    void prepareFailView(String error);
+public interface ClearOutputBoundary {
+
+    void prepareSuccessView(ClearOutputData clearOutputData);
+
 }
